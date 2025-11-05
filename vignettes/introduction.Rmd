@@ -8,5 +8,81 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This vignette introduces **myPackage**, a simple R package for exploring **mtcars** with a Shiny app.
+# Introduction
+
+This vignette demonstrates how to use `myPackage` to explore the MTCARS dataset interactively.
+
+# Installing the package
+
+```r
+install.packages("pak")
+pak::pak("ETC5523-2025/assignment-4-packages-and-shiny-apps-svis0010-beep")
+library(myPackage)
+
+```
+#Launch the Interactive Shiny app
+
+The package includes a Shiny app to interactively explore the dataset:
+
+```r
+launch_app()
+
+```
+#App Features
+
+Select Variables: Choose X and Y axes from car attributes.
+
+Filter Data: Use the slider to display a subset of cars.
+
+Interactive Plot: The plot updates automatically as selections change.
+
+Users can compare relative metrics and view differences through an interactive map.
+
+![MTCARS Example Plot](imgs/vigimg.png)
+# Dataset Included
+
+The package includes the cleaned mtcars_clean dataset with the following variables:
+mpg = Miles per gallon
+disp = Engine displacement
+hp = Gross horsepower
+wt = Weight (1000lbs)
+
+# EXAMPLE of FUNCTIONS YOU CAN USE
+```r
+head(mtcars_clean)
+summary(mtcars_clean)
+
+```
+#Interpreting the outputs
+
+X-axis and Y-axis: Select car attributes to visualize their relationship.
+
+Number of points: Limit how many cars are displayed for faster interaction.
+
+Trend: For example, selecting displacement (x-axis) and mpg (y-axis) typically shows a negative trend, meaning as displacement increases, mpg tends to decrease.
+
+Interactive plots: Use the app to explore different variable combinations to gain insights on how car attributes are related.
+
+#Conclusion
+myPackage provides an interactive way to explore the MTCARS dataset, both through the Shiny app and directly in R. This vignette demonstrates installation, launching the app, and using core functions.
+
+
+---
+
+*Instructions to add this vignette to your package:**
+1. Save this as `vignettes/introduction.Rmd` in your package folder.
+2. Make sure `DESCRIPTION` includes:
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+
+3. Build the vignette:
+
+```r
+devtools::build_vignettes()
+```
+library(devtools)
+
+build_vignettes()
+
+browseVignettes(package = "myPackage")
 
