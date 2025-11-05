@@ -1,0 +1,12 @@
+
+---
+title: 'Introduction to myPackage'
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to myPackage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This vignette introduces **myPackage**, a simple R package for exploring **mtcars** with a Shiny app.
+
