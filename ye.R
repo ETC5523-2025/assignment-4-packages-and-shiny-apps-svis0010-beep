@@ -22,6 +22,8 @@ library(usethis)
 usethis::use_readme_md(open = TRUE)
 
 
+usethis::use_mit_license("Siddhi Vispute")
+
 writeLines(desc_content, "DESCRIPTION")
 
 
@@ -103,8 +105,10 @@ library(myPackage)
 launch_app()
 
 system("git status")
+system("git add .")
 
-logs <- system("git log --oneline", intern = TRUE)
+system('git config --global user.name "Siddhi Vispute"')
+system('git config --global user.email "your_email@example.com"')
 
-# Print to console
-cat(logs, sep = "\n")
+system('git commit -m "Initial commit of myPackage with README, Shiny app, and data"')
+
