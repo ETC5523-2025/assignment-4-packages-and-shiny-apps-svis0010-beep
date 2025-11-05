@@ -1,10 +1,10 @@
 Package: myPackage
 Type: Package
-Title: MTCARS Analysis Package
+Title: myPackage: Interactive Exploration of the MTCARS Dataset
 Version: 0.1.0
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: An example R package containing a Shiny app and cleaned mtcars dataset.
+Author: Siddhi
+Maintainer: Your Name <svis0010@student.monash.edu>
+Description: Provides the cleaned MTCARS dataset and interactive tools for exploring relationships between car attributes such as miles per gallon, displacement, horsepower, and weight. Includes a Shiny app for interactive visualization, functions for comparing variables, and reproducible examples for analysis..
 License: MIT
 Encoding: UTF-8
 LazyData: true
