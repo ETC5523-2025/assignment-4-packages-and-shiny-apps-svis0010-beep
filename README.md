@@ -34,17 +34,4 @@ A detailed guide to using `myPackage` and its Shiny app can be found in the vign
 [Getting Started with myPackage](https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-svis0010-beep/articles/introduction.html)
 
 ##myPackage
-
-Interactive Exploration of the FWI Dataset
-
-myPackage is an R package designed to help users explore the classic mtcars dataset interactively. It includes:
-
-A cleaned dataset ready for analysis.
-
-Shiny app for visualizing relationships between car attributes like MPG, horsepower, weight, and displacement.
-
-Functions to compare variables and generate reproducible examples.
-
-Vignettes to guide users through analysis workflows.
-
-Whether you are learning R, teaching data science, or exploring automotive data, myPackage provides an intuitive interface and ready-to-use tools for interactive data exploration.
+myPackage provides tools and an interactive Shiny dashboard to explore the Fire Weather Index (FWI) dataset for SE Australia. Users can visualize yearly FWI trends, examine extreme fire weather conditions over time, and gain insights into the relationship between climate variables and fire danger. The package includes cleaned data, plotting functions, and a fully interactive app for exploratory analysis, making it easy to explore historical fire risk patterns and understand long-term trends.

@@ -10,7 +10,7 @@ vignette: >
 
 # Introduction
 
-This vignette demonstrates how to use `myPackage` to explore the MTCARS dataset interactively.
+This vignette demonstrates how to use `myPackage` to explore the **Fire Weather Index (FWI)** dataset interactively.
 
 # Installing the package
 
@@ -22,7 +22,7 @@ library(myPackage)
 ```
 #Launch the Interactive Shiny app
 
-The package includes a Shiny app to interactively explore the dataset:
+The package includes a Shiny app to interactively explore FWI values across years:
 
 ```r
 launch_app()
@@ -30,41 +30,46 @@ launch_app()
 ```
 #App Features
 
-Select Variables: Choose X and Y axes from car attributes.
+Select Years: Use the slider to choose how many years to display.
 
-Filter Data: Use the slider to display a subset of cars.
+Interactive Plot: The plot updates automatically to reflect the selected years.
 
-Interactive Plot: The plot updates automatically as selections change.
+Insight: Observe trends in the Fire Weather Index over time.
 
-Users can compare relative metrics and view differences through an interactive map.
+This allows users to explore meteorological fire danger trends in SE Australia.
 
-![MTCARS Example Plot](imgs/vigimg.png)
+![MTCARS Example Plot](imgs/gotta.png)
 # Dataset Included
 
-The package includes the cleaned mtcars_clean dataset with the following variables:
-mpg = Miles per gallon
-disp = Engine displacement
-hp = Gross horsepower
-wt = Weight (1000lbs)
+The package includes the cleaned `fwi` dataset with the following variables:
+
+Variable           Description
+
+`year`            Year of observation 
+`fwi_index`       Fire Weather Index Value 
+
+The data was sourced from KNMI Climate Explorer
+. It was originally monthly, but we aggregated it to yearly averages for easier exploration.
 
 # EXAMPLE of FUNCTIONS YOU CAN USE
+Explore the dataset directly in R:
 ```r
-head(mtcars_clean)
-summary(mtcars_clean)
+# View first few rows
+head(fwi)
 
+# Summary statistics
+summary(fwi)
 ```
 #Interpreting the outputs
 
-X-axis and Y-axis: Select car attributes to visualize their relationship.
+Year (x-axis): The time period of observation.
 
-Number of points: Limit how many cars are displayed for faster interaction.
+FWI Index (y-axis): Represents fire danger based on weather variables like temperature, rainfall, humidity, and wind speed.
 
-Trend: For example, selecting displacement (x-axis) and mpg (y-axis) typically shows a negative trend, meaning as displacement increases, mpg tends to decrease.
-
-Interactive plots: Use the app to explore different variable combinations to gain insights on how car attributes are related.
+Trend: Higher FWI values indicate more extreme fire weather conditions. Use the slider to see changes over time interactively.
 
 #Conclusion
-myPackage provides an interactive way to explore the MTCARS dataset, both through the Shiny app and directly in R. This vignette demonstrates installation, launching the app, and using core functions.
+`myPackage` provides an interactive way to explore the Fire Weather Index dataset in SE Australia, both through the Shiny app and directly in R. This vignette demonstrates installation, launching the app, exploring the dataset, and interpreting the outputs.
 
 
 ---
@@ -80,6 +85,13 @@ VignetteBuilder: knitr
 ```r
 devtools::build_vignettes()
 ```
+4. Preview vignette:
+
+```r
+browseVignettes(package = "myPackage")
+```
+
+
 library(devtools)
 
 build_vignettes()
