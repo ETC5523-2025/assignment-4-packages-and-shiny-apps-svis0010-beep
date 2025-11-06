@@ -5,60 +5,64 @@ library(shinythemes)
 
 library(shiny)
 
+library(myPackage)
+fwi <- mydata
+names(mydata) <- c("year", "fwi_index")
+
+fwi <- myPackage::fwi
+
+
+
+
+#TRIAL 3
+
 ui <- fluidPage(
-  tags$head(
-    tags$style(HTML("
-      body {
-        background-color: #ffe6f2;  /* light pink background */
-      }
-    "))
-  ),
+  theme = shinytheme("cerulean"), # you can change theme if you like
+  tags$style(HTML("
+    body { background-color: #ffccff; }  /* Pink background */
+    h3 { color: #99004d; }
+    p { font-size: 14px; }
+  ")),
 
-  titlePanel("MTCARS Explorer"),
-
-  p("This Shiny app helps you explore relationships between variables in the mtcars dataset.
-   The dataset contains information about various car models, such as their fuel efficiency and engine size."),
-
-  p("Use the selectors on the left to choose which variables appear on the X and Y axes.
-   For example, selecting 'mpg' on the Y-axis and 'disp' (engine displacement) on the X-axis
-   shows how fuel efficiency changes as engine size increases."),
-
-  p("Interpretation: As displacement increases, miles per gallon (mpg) generally decreases,
-   showing a negative, downward-sloping trend.
-   This means larger engines tend to consume more fuel per distance traveled."),
-
-  p("The slider below lets you adjust how many car models are displayed in the plot."),
+  titlePanel("FWI Explorer"),
 
   sidebarLayout(
     sidebarPanel(
-      helpText("Select variables to compare. The plot updates automatically."),
-      selectInput("xvar", "X-axis:", choices = names(mtcars)),
-      selectInput("yvar", "Y-axis:", choices = names(mtcars)),
-      sliderInput("n", "Number of points to display:",
-                  min = 1, max = nrow(mtcars), value = nrow(mtcars))
+      sliderInput("n", "Number of years to display:",
+                  min = 1, max = nrow(fwi), value = nrow(fwi))
     ),
     mainPanel(
-      plotOutput("scatter"),
-      helpText("Each point represents a car. Use the slider to limit displayed cars.")
+      h3("Fire Weather Index (FWI) Over Time"),
+      p("This is a scatterplot of Fire Weather Index across years."),
+      p("The data was sourced from: ",
+        a("KNMI Climate Explorer",
+          href = "https://climexp.knmi.nl/getindices.cgi?WMO=SEAustralia/fwi_era5_monmean_97-18_nsw&STATION=FWI_era5_monmean_nsw&TYPE=i&id=")),
+      p("The data was initially monthly, but has been averaged across years."),
+      p("FWI is a meteorological system representing fire danger by combining weather variables like temperature, rainfall, humidity, and wind speed. A higher index indicates more extreme weather events."),
+      p("Use the slider to explore changes across years."),
+      plotOutput("fwi_plot")
     )
   )
 )
 
+# Server
 server <- function(input, output) {
-  output$scatter <- renderPlot({
-    data <- mtcars[1:input$n, ]
+  output$fwi_plot <- renderPlot({
+    req(fwi)  # ensure dataset exists
+    data <- fwi[1:input$n, ]
+
     plot(
-      data[[input$xvar]], data[[input$yvar]],
-      xlab = input$xvar,
-      ylab = input$yvar,
-      main = paste("MTCARS:", input$xvar, "vs", input$yvar),
+      data$year, data$fwi_index,
+      type = "b",
+      col = "#99004d",
       pch = 19,
-      col = "#99004d"
+      xlab = "Year",
+      ylab = "FWI Yearly Index",
+      main = "FWI Yearly Index over Time"
     )
   })
 }
 
+# Run the app
 shinyApp(ui = ui, server = server)
-
-
 

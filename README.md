@@ -35,7 +35,7 @@ A detailed guide to using `myPackage` and its Shiny app can be found in the vign
 
 ##myPackage
 
-Interactive Exploration of the MTCARS Dataset
+Interactive Exploration of the FWI Dataset
 
 myPackage is an R package designed to help users explore the classic mtcars dataset interactively. It includes:
 
