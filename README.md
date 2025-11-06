@@ -1,7 +1,7 @@
 
 # myPackage
 
-The goal of `myPackage` is to help users explore the mtcars dataset interactively through a Shiny app, allowing them to visualise relationships between car attributes, gain insights from the data, and understand how different variables relate to each other.
+The goal of `myPackage` is to help users explore the fwi dataset interactively through a Shiny app, allowing them to visualise relationships and trends of how fwi has changed over years and its impact on climate change for australians. 
 
 ## Installation
 
