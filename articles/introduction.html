@@ -81,7 +81,8 @@
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p>This vignette demonstrates how to use <code>myPackage</code> to
-explore the MTCARS dataset interactively.</p>
+explore the <strong>Fire Weather Index (FWI)</strong> dataset
+interactively.</p>
 </div>
 <div class="section level2">
 <h2 id="installing-the-package">Installing the package<a class="anchor" aria-label="anchor" href="#installing-the-package"></a>
@@ -91,43 +92,49 @@ explore the MTCARS dataset interactively.</p>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu">pak</span><span class="op">(</span><span class="st">"ETC5523-2025/assignment-4-packages-and-shiny-apps-svis0010-beep"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">myPackage</span><span class="op">)</span></span></code></pre></div>
 <p>#Launch the Interactive Shiny app</p>
-<p>The package includes a Shiny app to interactively explore the
-dataset:</p>
+<p>The package includes a Shiny app to interactively explore FWI values
+across years:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>#App Features</p>
-<p>Select Variables: Choose X and Y axes from car attributes.</p>
-<p>Filter Data: Use the slider to display a subset of cars.</p>
-<p>Interactive Plot: The plot updates automatically as selections
-change.</p>
-<p>Users can compare relative metrics and view differences through an
-interactive map.</p>
-<p><img src="imgs/vigimg.png" alt="MTCARS Example Plot"> # Dataset
+<p>Select Years: Use the slider to choose how many years to display.</p>
+<p>Interactive Plot: The plot updates automatically to reflect the
+selected years.</p>
+<p>Insight: Observe trends in the Fire Weather Index over time.</p>
+<p>This allows users to explore meteorological fire danger trends in SE
+Australia.</p>
+<p><img src="imgs/gotta.png" alt="MTCARS Example Plot"> # Dataset
 Included</p>
-<p>The package includes the cleaned mtcars_clean dataset with the
-following variables: mpg = Miles per gallon disp = Engine displacement
-hp = Gross horsepower wt = Weight (1000lbs)</p>
+<p>The package includes the cleaned <code>fwi</code> dataset with the
+following variables:</p>
+<p>Variable Description</p>
+<p><code>year</code> Year of observation <code>fwi_index</code> Fire
+Weather Index Value</p>
+<p>The data was sourced from KNMI Climate Explorer . It was originally
+monthly, but we aggregated it to yearly averages for easier
+exploration.</p>
 </div>
 <div class="section level2">
 <h2 id="example-of-functions-you-can-use">EXAMPLE of FUNCTIONS YOU CAN USE<a class="anchor" aria-label="anchor" href="#example-of-functions-you-can-use"></a>
 </h2>
+<p>Explore the dataset directly in R:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars_clean</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mtcars_clean</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># View first few rows</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fwi</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summary statistics</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fwi</span><span class="op">)</span></span></code></pre></div>
 <p>#Interpreting the outputs</p>
-<p>X-axis and Y-axis: Select car attributes to visualize their
-relationship.</p>
-<p>Number of points: Limit how many cars are displayed for faster
-interaction.</p>
-<p>Trend: For example, selecting displacement (x-axis) and mpg (y-axis)
-typically shows a negative trend, meaning as displacement increases, mpg
-tends to decrease.</p>
-<p>Interactive plots: Use the app to explore different variable
-combinations to gain insights on how car attributes are related.</p>
-<p>#Conclusion myPackage provides an interactive way to explore the
-MTCARS dataset, both through the Shiny app and directly in R. This
-vignette demonstrates installation, launching the app, and using core
-functions.</p>
+<p>Year (x-axis): The time period of observation.</p>
+<p>FWI Index (y-axis): Represents fire danger based on weather variables
+like temperature, rainfall, humidity, and wind speed.</p>
+<p>Trend: Higher FWI values indicate more extreme fire weather
+conditions. Use the slider to see changes over time interactively.</p>
+<p>#Conclusion <code>myPackage</code> provides an interactive way to
+explore the Fire Weather Index dataset in SE Australia, both through the
+Shiny app and directly in R. This vignette demonstrates installation,
+launching the app, exploring the dataset, and interpreting the
+outputs.</p>
 <hr>
 <p>*Instructions to add this vignette to your package:** 1. Save this as
 <code>vignettes/introduction.Rmd</code> in your package folder. 2. Make
@@ -138,6 +145,11 @@ VignetteBuilder: knitr</p>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/build_vignettes.html" class="external-link">build_vignettes</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Preview vignette:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html" class="external-link">browseVignettes</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"myPackage"</span><span class="op">)</span></span></code></pre></div>
 <p>library(devtools)</p>
 <p>build_vignettes()</p>
 <p>browseVignettes(package = “myPackage”)</p>
